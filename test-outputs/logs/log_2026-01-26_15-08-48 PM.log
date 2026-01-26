@@ -1,0 +1,9 @@
+[INFO ] 2026-01-26 15:08:48 PM [main] [Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:41)] - Test Case -> (validateHomePageUrl) started
+[INFO ] 2026-01-26 15:09:07 PM [main] [Utilities.Utility.verifyUrl(Utility.java:111)] - Expected condition failed: waiting for url to be "https://automationexercise.com/". Current url: "https://automationexercise.com/login"
+(tried for 15 seconds with 500 milliseconds interval)
+Build info: version: '4.40.0', revision: 'b3333f1'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.2'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 144.0.3719.92, fedcm:accounts: true, goog:processID: 21180, ms:edgeOptions: {debuggerAddress: localhost:51595}, msedge: {msedgedriverVersion: 144.0.3719.92 (8380d6794b22..., userDataDir: C:\Users\AMRAMA~1\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51595/devtoo..., se:cdpVersion: 144.0.3719.92, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 26bd855ddffc7b4524aef6f297c43c71
+[INFO ] 2026-01-26 15:09:07 PM [main] [Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:35)] - Test Case -> (validateHomePageUrl) passed

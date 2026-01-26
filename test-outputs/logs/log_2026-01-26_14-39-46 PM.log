@@ -1,0 +1,2 @@
+[INFO ] 2026-01-26 14:39:46 PM [main] [Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:41)] - Test Case -> (validateHomePageUrl) started
+[INFO ] 2026-01-26 14:39:46 PM [main] [Listeners.ITestListenerClass.onTestSkipped(ITestListenerClass.java:28)] - Test Case -> (validateHomePageUrl) skipped
