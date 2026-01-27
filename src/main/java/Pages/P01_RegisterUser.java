@@ -4,6 +4,12 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.time.Month;
+import java.time.format.TextStyle;
+import java.util.Locale;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 import static Utilities.Utility.*;
 
 public class P01_RegisterUser {
@@ -22,9 +28,11 @@ public class P01_RegisterUser {
     private final By enterAccountInfoTextLocator = By.xpath("(//b/preceding::h2[contains(@class, 'text-center')])[1]");
     private final By title = By.id("id_gender1");
     private final By password = By.id("password");
-    private final By day = By.id("days");
-    private final By month = By.id("months");
-    private final By year = By.id("years");
+    private final By dayLocator = By.id("days");
+    private final By monthLocator = By.id("months");
+    private final By yearLocator = By.id("years");
+    private final By specialOffers = By.id("optin");
+    private final By newsLetter = By.id("newsletter");
 
 
     public P01_RegisterUser clickOnSignupLogin(){
@@ -58,7 +66,34 @@ public class P01_RegisterUser {
         return this;
     }
 
-    
+    public P01_RegisterUser selectDay(){
+        selectFromDropdown(driver, dayLocator, String.valueOf(new Faker().number().numberBetween(1,32)));
+        return this;
+    }
+
+    public P01_RegisterUser selectMonth(){
+
+        Month month = Month.of(new Random().nextInt(12) + 1);
+        String monthName = month.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+        selectFromDropdown(driver, monthLocator, monthName);
+        return this;
+    }
+
+    public P01_RegisterUser selectYear(){
+        int year = ThreadLocalRandom.current().nextInt(1900, 2026);
+        selectFromDropdown(driver, yearLocator, String.valueOf(year));
+        return this;
+    }
+
+    public P01_RegisterUser checkReceiveSpecialOffers(){
+        clickOnElement(driver, specialOffers);
+        return this;
+    }
+
+    public P01_RegisterUser checkSignUpForOurNewsletter() {
+        clickOnElement(driver, newsLetter);
+        return this;
+    }
 
     public boolean verifyNewUserSignupText(){
         return verifyVisibilityOfText(driver, newUserSignupLocator);
@@ -67,5 +102,6 @@ public class P01_RegisterUser {
     public boolean verifyEnterAccountInfoText(){
         return verifyVisibilityOfText(driver,enterAccountInfoTextLocator );
     }
+
 
 }

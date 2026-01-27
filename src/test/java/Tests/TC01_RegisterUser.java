@@ -59,7 +59,18 @@ public class TC01_RegisterUser {
 
     @Test(priority = 4)
     public void fillSignUpDetails(){
-
+        new P01_RegisterUser(getDriver())
+                .clickOnSignupLogin()
+                .enterName()
+                .enterEmail()
+                .clickSignup()
+                .selectTitle()
+                .fillPassword()
+                .selectDay()
+                .selectMonth()
+                .selectYear()
+                .checkSignUpForOurNewsletter()
+                .checkReceiveSpecialOffers();
     }
 
 

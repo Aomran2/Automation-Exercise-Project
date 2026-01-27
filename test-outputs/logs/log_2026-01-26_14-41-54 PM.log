@@ -1,2 +1,0 @@
-[INFO ] 2026-01-26 14:41:54 PM [main] [Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:41)] - Test Case -> (validateHomePageUrl) started
-[INFO ] 2026-01-26 14:41:54 PM [main] [Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:35)] - Test Case -> (validateHomePageUrl) passed

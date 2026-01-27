@@ -1,2 +1,0 @@
-[INFO ] 2026-01-26 16:09:13 PM [main] [Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:41)] - Test Case -> (verifyVisibilityOfNewUserSignup) started
-[INFO ] 2026-01-26 16:09:16 PM [main] [Listeners.ITestListenerClass.onTestFailure(ITestListenerClass.java:21)] - Test Case -> (verifyVisibilityOfNewUserSignup) failed
