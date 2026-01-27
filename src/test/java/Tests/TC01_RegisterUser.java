@@ -1,6 +1,6 @@
 package Tests;
 
-import Pages.P01_HomePage;
+import Pages.P01_RegisterUser;
 import Utilities.Utility;
 import Listeners.ITestListenerClass;
 import com.github.javafaker.Faker;
@@ -17,7 +17,7 @@ import static DriverFactory.DriverFactory.*;
 import static Utilities.DataUtils.getPropertyData;
 
 @Listeners(ITestListenerClass.class)
-public class TC01_HomeTC {
+public class TC01_RegisterUser {
 
     private final SoftAssert soft = new SoftAssert();
 
@@ -38,23 +38,28 @@ public class TC01_HomeTC {
 
     @Test(priority = 2)
     public void verifyVisibilityOfNewUserSignup(){
-        new P01_HomePage(getDriver())
+        new P01_RegisterUser(getDriver())
                 .clickOnSignupLogin();
 
-        soft.assertTrue(new P01_HomePage(getDriver()).verifyNewUserSignupText());
+        soft.assertTrue(new P01_RegisterUser(getDriver()).verifyNewUserSignupText());
         soft.assertAll();
     }
 
     @Test(priority = 3)
     public void newUserSignup(){
-        new P01_HomePage(getDriver())
+        new P01_RegisterUser(getDriver())
                 .clickOnSignupLogin()
-                .enterName(new Faker().name().firstName())
-                .enterEmail(new Faker().internet().emailAddress())
+                .enterName()
+                .enterEmail()
                 .clickSignup();
 
-        soft.assertTrue(new P01_HomePage(getDriver()).verifyEnterAccountInfoText());
+        soft.assertTrue(new P01_RegisterUser(getDriver()).verifyEnterAccountInfoText());
         soft.assertAll();
+    }
+
+    @Test(priority = 4)
+    public void fillSignUpDetails(){
+
     }
 
 
