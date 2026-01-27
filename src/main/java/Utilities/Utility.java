@@ -1,5 +1,6 @@
 package Utilities;
 
+import com.github.javafaker.Faker;
 import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -12,10 +13,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.time.Month;
+import java.time.format.TextStyle;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Utility {
 
@@ -120,6 +121,23 @@ public class Utility {
 
     public static boolean verifyVisibilityOfText(WebDriver driver, By locator){
        return generalWait(driver).until(ExpectedConditions.visibilityOfElementLocated(locator)).isDisplayed();
+    }
+
+    //generate random day between 1 and 31
+    public static String generateDayOfMonth(){
+        return String.valueOf(new Faker().number().numberBetween(1,32));
+    }
+
+    //generate random month ex: February
+    public static String generateMonth(){
+        Month month = Month.of(new Random().nextInt(12) + 1);
+        return month.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+    }
+
+    //generate random year between 1900 and 2026
+    public static String generateYear(){
+        int year = ThreadLocalRandom.current().nextInt(1900, 2026);
+        return String.valueOf(year);
     }
 
 

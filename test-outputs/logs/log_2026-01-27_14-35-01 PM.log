@@ -1,0 +1,2 @@
+[INFO ] 2026-01-27 14:35:01 PM [main] [Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:41)] - Test Case -> (fillSignUpDetails) started
+[INFO ] 2026-01-27 14:35:09 PM [main] [Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:35)] - Test Case -> (fillSignUpDetails) passed
