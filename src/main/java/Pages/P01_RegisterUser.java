@@ -66,11 +66,13 @@ public class P01_RegisterUser {
         return this;
     }
 
+    //TODO: to create method in utility class to generate random day of month
     public P01_RegisterUser selectDay(){
         selectFromDropdown(driver, dayLocator, String.valueOf(new Faker().number().numberBetween(1,32)));
         return this;
     }
 
+    //TODO: to create method in utility class to generate random month
     public P01_RegisterUser selectMonth(){
 
         Month month = Month.of(new Random().nextInt(12) + 1);
@@ -79,6 +81,7 @@ public class P01_RegisterUser {
         return this;
     }
 
+    //TODO: to create method in utility class to generate random year
     public P01_RegisterUser selectYear(){
         int year = ThreadLocalRandom.current().nextInt(1900, 2026);
         selectFromDropdown(driver, yearLocator, String.valueOf(year));
