@@ -18,12 +18,14 @@ import java.time.format.TextStyle;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static DriverFactory.DriverFactory.getDriver;
+
 public class Utility {
 
     private static final String SCREENSHOT_PATH = "test-outputs/screenshots/";
 
     public static void sendKeysToElement(WebDriver driver, By locator, String text) {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
 
         driver.findElement(locator).sendKeys(text);
@@ -31,7 +33,7 @@ public class Utility {
 
 
     public static void clickOnElement(WebDriver driver, By locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.elementToBeClickable(locator));
         driver.findElement(locator).click();
     }
@@ -139,7 +141,6 @@ public class Utility {
         int year = ThreadLocalRandom.current().nextInt(1900, 2026);
         return String.valueOf(year);
     }
-
 
 }
 

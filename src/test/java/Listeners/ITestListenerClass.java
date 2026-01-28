@@ -2,8 +2,12 @@ package Listeners;
 
 
 import Utilities.LogUtils;
+import Utilities.Utility;
+import io.qameta.allure.Allure;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+
+import java.io.ByteArrayInputStream;
 
 import static DriverFactory.DriverFactory.getDriver;
 import static Utilities.Utility.takeScreenshot;
@@ -20,6 +24,7 @@ public class ITestListenerClass implements ITestListener {
 
         LogUtils.info("Test Case -> " + "(" + result.getName() + ")" + " failed");
     }
+
 
 
     public void onTestSkipped(ITestResult result) {

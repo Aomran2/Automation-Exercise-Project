@@ -4,12 +4,9 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.time.Month;
-import java.time.format.TextStyle;
-import java.util.Locale;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
+import java.io.IOException;
 
+import static Utilities.DataUtils.getPropertyData;
 import static Utilities.Utility.*;
 
 public class P01_RegisterUser {
@@ -33,6 +30,12 @@ public class P01_RegisterUser {
     private final By yearLocator = By.id("years");
     private final By specialOffers = By.id("optin");
     private final By newsLetter = By.id("newsletter");
+    private final By fName = By.id("first_name");
+    private final By lName = By.id("last_name");
+    private final By company = By.id("company");
+    private final By addressOne = By.id("address1");
+    private final By addressTwo = By.id("address2");
+    private final By country = By.id("country");
 
 
     public P01_RegisterUser clickOnSignupLogin(){
@@ -90,7 +93,39 @@ public class P01_RegisterUser {
     }
 
     public P01_RegisterUser checkSignUpForOurNewsletter() {
+        scrollToElement(driver, newsLetter);
         clickOnElement(driver, newsLetter);
+        return this;
+    }
+
+    public P01_RegisterUser fillFirstName(){
+        sendKeysToElement(driver, fName, new Faker().name().firstName());
+        return this;
+    }
+
+    public P01_RegisterUser fillLastName(){
+        sendKeysToElement(driver, lName, new Faker().name().lastName());
+        return this;
+    }
+
+    public P01_RegisterUser fillCompany(){
+        sendKeysToElement(driver, company, new Faker().company().name());
+        return this;
+    }
+
+    public P01_RegisterUser fillAddressOne(){
+        sendKeysToElement(driver, addressOne, new Faker().address().streetAddress());
+        return this;
+    }
+
+    public P01_RegisterUser fillAddressTwo(){
+        sendKeysToElement(driver, addressTwo, new Faker().address().fullAddress());
+        return this;
+    }
+
+    public P01_RegisterUser selectCountry() throws IOException {
+
+        sendKeysToElement(driver, country, getPropertyData("Environment","country"));
         return this;
     }
 

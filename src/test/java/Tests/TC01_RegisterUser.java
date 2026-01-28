@@ -58,7 +58,7 @@ public class TC01_RegisterUser {
     }
 
     @Test(priority = 4)
-    public void fillSignUpDetails(){
+    public void fillSignUpDetails() throws IOException {
         new P01_RegisterUser(getDriver())
                 .clickOnSignupLogin()
                 .enterName()
@@ -70,7 +70,14 @@ public class TC01_RegisterUser {
                 .selectMonth()
                 .selectYear()
                 .checkSignUpForOurNewsletter()
-                .checkReceiveSpecialOffers();
+                .checkReceiveSpecialOffers()
+                .fillFirstName()
+                .fillLastName()
+                .fillCompany()
+                .fillAddressOne()
+                .fillAddressTwo()
+                .selectCountry();
+
     }
 
 

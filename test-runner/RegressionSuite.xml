@@ -5,12 +5,7 @@
     </listeners>
     <test name="Regression Test">
         <classes>
-            <class name=""/>
-            <class name=""/>
-            <class name=""/>
-            <class name=""/>
-            <class name=""/>
-            <class name=""/>
+            <class name="Tests.TC01_RegisterUser"/>
         </classes>
     </test>
 </suite>
