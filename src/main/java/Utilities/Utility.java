@@ -52,20 +52,15 @@ public class Utility {
 
         try {
             //capture screenshot using TakeScreenshot
-            File fileSrc = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             //saving screenshot to a file
             File destFile = new File(SCREENSHOT_PATH + screenShotName + "_" + getTimeStamp() + ".png");
-            FileUtils.copyFile(fileSrc, destFile);
+            FileUtils.copyFile(file, destFile);
 
             //attach the screenshot to the Allure report
-            try {
-                Allure.addAttachment(screenShotName, "image/png", Files.newInputStream(Path.of(destFile.getPath())), ".png");
-            } catch (Exception allureException) {
-                LogUtils.info("Could not attach screenshot to Allure, but screenshot saved at: " + destFile.getPath());
-                LogUtils.info(allureException.getMessage());
-            }
+            Allure.addAttachment(screenShotName, Files.newInputStream(Path.of(destFile.getPath())));
         } catch (Exception e) {
-            LogUtils.info("Error taking screenshot: " + e.getMessage());
+            LogUtils.info(e.getMessage());
         }
     }
 
