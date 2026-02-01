@@ -58,9 +58,14 @@ public class Utility {
             FileUtils.copyFile(fileSrc, destFile);
 
             //attach the screenshot to the Allure report
-            Allure.addAttachment(screenShotName, Files.newInputStream(Path.of(destFile.getPath())));
+            try {
+                Allure.addAttachment(screenShotName, "image/png", Files.newInputStream(Path.of(destFile.getPath())), ".png");
+            } catch (Exception allureException) {
+                LogUtils.info("Could not attach screenshot to Allure, but screenshot saved at: " + destFile.getPath());
+                LogUtils.info(allureException.getMessage());
+            }
         } catch (Exception e) {
-            LogUtils.info(e.getMessage());
+            LogUtils.info("Error taking screenshot: " + e.getMessage());
         }
     }
 

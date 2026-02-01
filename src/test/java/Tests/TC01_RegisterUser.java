@@ -15,6 +15,7 @@ import java.time.Duration;
 
 import static DriverFactory.DriverFactory.*;
 import static Utilities.DataUtils.getPropertyData;
+import static Utilities.Utility.takeScreenshot;
 
 @Listeners(ITestListenerClass.class)
 public class TC01_RegisterUser {
@@ -52,6 +53,7 @@ public class TC01_RegisterUser {
                 .enterName()
                 .enterEmail()
                 .clickSignup();
+
 
         soft.assertTrue(new P01_RegisterUser(getDriver()).verifyEnterAccountInfoText());
         soft.assertAll();

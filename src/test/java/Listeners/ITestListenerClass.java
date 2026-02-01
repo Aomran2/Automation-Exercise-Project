@@ -17,12 +17,10 @@ public class ITestListenerClass implements ITestListener {
     public void onTestFailure(ITestResult result) {
         try {
             if (result.getStatus() == ITestResult.FAILURE)
-                takeScreenshot(getDriver(), result.getName());
+                LogUtils.info("Test Case -> " + "(" + result.getName() + ")" + " failed");
         } catch (Exception e) {
             LogUtils.info(e.getMessage());
         }
-
-        LogUtils.info("Test Case -> " + "(" + result.getName() + ")" + " failed");
     }
 
 
