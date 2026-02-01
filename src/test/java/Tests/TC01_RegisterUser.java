@@ -78,7 +78,12 @@ public class TC01_RegisterUser {
                 .fillCompany()
                 .fillAddressOne()
                 .fillAddressTwo()
-                .selectCountry();
+                .selectCountry()
+                .fillState()
+                .fillCity()
+                .fillZipCode()
+                .fillMobileNumber()
+                .clickCreateAccount();
 
     }
 
@@ -86,6 +91,6 @@ public class TC01_RegisterUser {
 
     @AfterMethod
     public void tearDown(){
-        closeDriver();
+//        closeDriver();
     }
 }

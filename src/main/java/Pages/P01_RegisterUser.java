@@ -36,6 +36,12 @@ public class P01_RegisterUser {
     private final By addressOne = By.id("address1");
     private final By addressTwo = By.id("address2");
     private final By country = By.id("country");
+    private final By state = By.id("state");
+    private final By city = By.id("city");
+    private final By zipCode = By.id("zipcode");
+    private final By mobileNumber = By.id("mobile_number");
+    private final By createAccountBtn = By.xpath("//button[@data-qa=\"create-account\"]");
+
 
 
     public P01_RegisterUser clickOnSignupLogin(){
@@ -129,6 +135,31 @@ public class P01_RegisterUser {
         return this;
     }
 
+    public P01_RegisterUser fillState(){
+        sendKeysToElement(driver, state, new Faker().address().state());
+        return this;
+    }
+
+    public P01_RegisterUser fillCity(){
+        sendKeysToElement(driver, city, new Faker().address().city());
+        return this;
+    }
+
+    public P01_RegisterUser fillZipCode(){
+        sendKeysToElement(driver, zipCode, new Faker().address().zipCode());
+        return this;
+    }
+
+    public P01_RegisterUser fillMobileNumber(){
+        sendKeysToElement(driver, mobileNumber, new Faker().phoneNumber().cellPhone());
+        return this;
+    }
+
+    public P02_AccountCreated clickCreateAccount() {
+        clickOnElement(driver, createAccountBtn);
+        return new P02_AccountCreated(driver);
+    }
+
     public boolean verifyNewUserSignupText(){
         return verifyVisibilityOfText(driver, newUserSignupLocator);
     }
@@ -136,6 +167,7 @@ public class P01_RegisterUser {
     public boolean verifyEnterAccountInfoText(){
         return verifyVisibilityOfText(driver,enterAccountInfoTextLocator );
     }
+
 
 
 }
