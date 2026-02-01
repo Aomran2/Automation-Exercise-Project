@@ -1,8 +1,0 @@
-[INFO ] 2026-01-28 13:09:07 PM [main] [Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:58)] - Test Case -> (validateHomePageUrl) started
-[INFO ] 2026-01-28 13:09:07 PM [main] [Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:52)] - Test Case -> (validateHomePageUrl) passed
-[INFO ] 2026-01-28 13:09:11 PM [main] [Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:58)] - Test Case -> (verifyVisibilityOfNewUserSignup) started
-[INFO ] 2026-01-28 13:09:15 PM [main] [Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:52)] - Test Case -> (verifyVisibilityOfNewUserSignup) passed
-[INFO ] 2026-01-28 13:09:24 PM [main] [Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:58)] - Test Case -> (newUserSignup) started
-[INFO ] 2026-01-28 13:09:30 PM [main] [Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:52)] - Test Case -> (newUserSignup) passed
-[INFO ] 2026-01-28 13:09:35 PM [main] [Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:58)] - Test Case -> (fillSignUpDetails) started
-[INFO ] 2026-01-28 13:09:58 PM [main] [Listeners.ITestListenerClass.onTestFailure(ITestListenerClass.java:38)] - Test Case -> (fillSignUpDetails) failed

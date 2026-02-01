@@ -48,17 +48,17 @@ public class Utility {
                 .executeScript("arguments[0].scrollIntoView();", byToWebElement(driver, locator));
     }
 
-    public static void takeScreenshot(WebDriver driver, String name){
+    public static void takeScreenshot(WebDriver driver, String screenShotName){
 
         try {
             //capture screenshot using TakeScreenshot
-            File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            File fileSrc = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             //saving screenshot to a file
-            File destFile = new File(SCREENSHOT_PATH + name + "_" + getTimeStamp() + ".png");
-            FileUtils.copyFile(file, destFile);
+            File destFile = new File(SCREENSHOT_PATH + screenShotName + "_" + getTimeStamp() + ".png");
+            FileUtils.copyFile(fileSrc, destFile);
 
             //attach the screenshot to the Allure report
-            Allure.addAttachment(name, Files.newInputStream(Path.of(destFile.getPath())));
+            Allure.addAttachment(screenShotName, Files.newInputStream(Path.of(destFile.getPath())));
         } catch (Exception e) {
             LogUtils.info(e.getMessage());
         }
