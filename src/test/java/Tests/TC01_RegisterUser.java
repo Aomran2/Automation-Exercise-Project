@@ -1,6 +1,7 @@
 package Tests;
 
 import Pages.P01_RegisterUser;
+import Pages.P02_AccountCreated;
 import Utilities.Utility;
 import Listeners.ITestListenerClass;
 import com.github.javafaker.Faker;
@@ -84,7 +85,8 @@ public class TC01_RegisterUser {
                 .fillZipCode()
                 .fillMobileNumber()
                 .clickCreateAccount();
-
+        soft.assertTrue(new P02_AccountCreated(getDriver()).verifyAccountCreatedText());
+        soft.assertAll();
     }
 
 

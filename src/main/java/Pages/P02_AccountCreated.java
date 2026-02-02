@@ -3,18 +3,56 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static Utilities.Utility.clickOnElement;
+import static Utilities.Utility.verifyVisibilityOfText;
+
 public class P02_AccountCreated {
 
     WebDriver driver;
 
     private final By accountCreatedTextLocator = By.xpath("//b[contains(text(),'Account Created!')]");
+    private final By continueBtnLocator = By.xpath("//a[@data-qa=\"continue-button\"]");
+    private final By loggedInAsLocator = By.xpath("//a[contains(text(), 'Logged in as')]");
+    private final By deleteAccountBtnLocator = By.xpath("//a[contains(text(), 'Delete Account')]");
+    //a[@href="/delete_account"]
+    private final By accountDeletedTextLocator = By.xpath("//b[contains(text(),'Account Deleted!')]");
+    private final By continueAfterDeleteBtnLocator = By.xpath("//a[@data-qa='continue-button']");
+    private final By closeCardBtnLocator = By.xpath("//div[@id='dismiss-button']/div/span");
+    //span[@class="ns-267bm-e-18"]
 
     public P02_AccountCreated(WebDriver driver){
         this.driver = driver;
     }
 
     public boolean verifyAccountCreatedText(){
-        return driver.findElement(accountCreatedTextLocator).isDisplayed();
+        return verifyVisibilityOfText(driver, accountCreatedTextLocator);
+    }
+
+    public P02_AccountCreated clickContinueBtn(){
+        clickOnElement(driver, continueBtnLocator);
+        return this;
+    }
+
+    public boolean verifyUserLoggedIn() {
+        return verifyVisibilityOfText(driver, loggedInAsLocator);
+    }
+
+    public P02_AccountCreated clickDeleteAccountBtn(){
+        clickOnElement(driver, deleteAccountBtnLocator);
+        return this;
+    }
+
+    public boolean verifyAccountDeletedText(){
+        return verifyVisibilityOfText(driver, accountDeletedTextLocator);
+    }
+
+    public P02_AccountCreated clickContinueAfterDeleteBtn(){
+        clickOnElement(driver, continueAfterDeleteBtnLocator);
+        return this;
+    }
+
+    public void clickCloseCardBtn(){
+        clickOnElement(driver, closeCardBtnLocator);
     }
 
 }
