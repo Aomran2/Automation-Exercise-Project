@@ -156,6 +156,7 @@ public class P01_RegisterUser {
     }
 
     public P02_AccountCreated clickCreateAccount() {
+        scrollToElement(driver, createAccountBtn);
         clickOnElement(driver, createAccountBtn);
         return new P02_AccountCreated(driver);
     }

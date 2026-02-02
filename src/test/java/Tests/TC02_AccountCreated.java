@@ -31,26 +31,16 @@ public class TC02_AccountCreated {
     public void continueAndVerifyAccountCreated() throws IOException {
         new P01_RegisterUser(getDriver())
                 .clickOnSignupLogin()
-                .enterName()
-                .enterEmail()
-                .clickSignup()
-                .selectTitle()
-                .fillPassword()
-                .selectDay()
-                .selectMonth()
-                .selectYear()
-                .checkSignUpForOurNewsletter()
-                .checkReceiveSpecialOffers()
-                .fillFirstName()
-                .fillLastName()
-                .fillCompany()
-                .fillAddressOne()
-                .fillAddressTwo()
-                .selectCountry()
-                .fillState()
-                .fillCity()
-                .fillZipCode()
-                .fillMobileNumber()
+                .enterName().enterEmail()
+                .clickSignup().selectTitle()
+                .fillPassword().selectDay()
+                .selectMonth().selectYear()
+                .checkSignUpForOurNewsletter().checkReceiveSpecialOffers()
+                .fillFirstName().fillLastName()
+                .fillCompany().fillAddressOne()
+                .fillAddressTwo().selectCountry()
+                .fillState().fillCity()
+                .fillZipCode().fillMobileNumber()
                 .clickCreateAccount()
                 .clickContinueBtn();
 
@@ -64,26 +54,16 @@ public class TC02_AccountCreated {
 
         new P01_RegisterUser(getDriver())
                 .clickOnSignupLogin()
-                .enterName()
-                .enterEmail()
-                .clickSignup()
-                .selectTitle()
-                .fillPassword()
-                .selectDay()
-                .selectMonth()
-                .selectYear()
-                .checkSignUpForOurNewsletter()
-                .checkReceiveSpecialOffers()
-                .fillFirstName()
-                .fillLastName()
-                .fillCompany()
-                .fillAddressOne()
-                .fillAddressTwo()
-                .selectCountry()
-                .fillState()
-                .fillCity()
-                .fillZipCode()
-                .fillMobileNumber()
+                .enterName().enterEmail()
+                .clickSignup().selectTitle()
+                .fillPassword().selectDay()
+                .selectMonth().selectYear()
+                .checkSignUpForOurNewsletter().checkReceiveSpecialOffers()
+                .fillFirstName().fillLastName()
+                .fillCompany().fillAddressOne()
+                .fillAddressTwo().selectCountry()
+                .fillState().fillCity()
+                .fillZipCode().fillMobileNumber()
                 .clickCreateAccount()
                 .clickContinueBtn();
 
@@ -93,82 +73,41 @@ public class TC02_AccountCreated {
 
 
     @Test
-    public void deleteAccountAndVerify() throws IOException {
-
-        new P01_RegisterUser(getDriver())
-                .clickOnSignupLogin()
-                .enterName()
-                .enterEmail()
-                .clickSignup()
-                .selectTitle()
-                .fillPassword()
-                .selectDay()
-                .selectMonth()
-                .selectYear()
-                .checkSignUpForOurNewsletter()
-                .checkReceiveSpecialOffers()
-                .fillFirstName()
-                .fillLastName()
-                .fillCompany()
-                .fillAddressOne()
-                .fillAddressTwo()
-                .selectCountry()
-                .fillState()
-                .fillCity()
-                .fillZipCode()
-                .fillMobileNumber()
-                .clickCreateAccount()
-                .clickContinueBtn()
-                .clickDeleteAccountBtn();
-
-        soft.assertTrue(new P02_AccountCreated(getDriver()).verifyAccountDeletedText());
-        soft.assertAll();
-    }
-
-
-    @Test
     public void continueAfterDeleteAccount() throws IOException {
 
         new P01_RegisterUser(getDriver())
                 .clickOnSignupLogin()
-                .enterName()
-                .enterEmail()
-                .clickSignup()
-                .selectTitle()
-                .fillPassword()
-                .selectDay()
-                .selectMonth()
-                .selectYear()
-                .checkSignUpForOurNewsletter()
-                .checkReceiveSpecialOffers()
-                .fillFirstName()
-                .fillLastName()
-                .fillCompany()
-                .fillAddressOne()
-                .fillAddressTwo()
-                .selectCountry()
-                .fillState()
-                .fillCity()
-                .fillZipCode()
-                .fillMobileNumber()
+                .enterName().enterEmail()
+                .clickSignup().selectTitle()
+                .fillPassword().selectDay()
+                .selectMonth().selectYear()
+                .checkSignUpForOurNewsletter().checkReceiveSpecialOffers()
+                .fillFirstName().fillLastName()
+                .fillCompany().fillAddressOne()
+                .fillAddressTwo().selectCountry()
+                .fillState().fillCity()
+                .fillZipCode().fillMobileNumber()
                 .clickCreateAccount()
+                .clickContinueBtn();
+
+        getDriver().navigate().refresh();
+
+                new P02_AccountCreated(getDriver())
                 .clickContinueBtn()
-                .clickDeleteAccountBtn()
-                .clickCloseCardBtn();
+                .clickDeleteAccountBtn();
+        getDriver().navigate().refresh();
+
 
         soft.assertTrue(new P02_AccountCreated(getDriver()).verifyAccountDeletedText());
 
         new P02_AccountCreated(getDriver())
                 .clickContinueAfterDeleteBtn();
 
-
         soft.assertAll();
     }
 
 
-
-
-
+    
     @AfterMethod
     public void tearDown(){
         closeDriver();

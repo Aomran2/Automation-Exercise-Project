@@ -1,10 +1,11 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static Utilities.Utility.clickOnElement;
-import static Utilities.Utility.verifyVisibilityOfText;
+import static Utilities.Utility.*;
 
 public class P02_AccountCreated {
 
@@ -51,8 +52,18 @@ public class P02_AccountCreated {
         return this;
     }
 
-    public void clickCloseCardBtn(){
-        clickOnElement(driver, closeCardBtnLocator);
-    }
+//    public P02_AccountCreated clickCloseCardBtn(){
+//        generalWait(driver)
+//                .until(ExpectedConditions
+//                .elementToBeClickable(closeCardBtnLocator)).click();
+//
+////        ((JavascriptExecutor) driver).executeScript(
+////                "document.body.innerHTML.includes('Create Custom Apps Using AI') && " +
+////                        "Array.from(document.querySelectorAll('div')).forEach(e => {" +
+////                        "if(e.innerText.includes('Create Custom Apps Using AI')) e.remove();});"
+////        );
+//
+//        return this;
+//    }
 
 }
