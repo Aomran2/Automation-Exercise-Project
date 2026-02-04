@@ -15,11 +15,8 @@ public class P02_AccountCreated {
     private final By continueBtnLocator = By.xpath("//a[@data-qa=\"continue-button\"]");
     private final By loggedInAsLocator = By.xpath("//a[contains(text(), 'Logged in as')]");
     private final By deleteAccountBtnLocator = By.xpath("//a[contains(text(), 'Delete Account')]");
-    //a[@href="/delete_account"]
     private final By accountDeletedTextLocator = By.xpath("//b[contains(text(),'Account Deleted!')]");
     private final By continueAfterDeleteBtnLocator = By.xpath("//a[@data-qa='continue-button']");
-    private final By closeCardBtnLocator = By.xpath("//div[@id='dismiss-button']/div/span");
-    //span[@class="ns-267bm-e-18"]
 
     public P02_AccountCreated(WebDriver driver){
         this.driver = driver;

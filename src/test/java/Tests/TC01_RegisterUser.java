@@ -32,67 +32,52 @@ public class TC01_RegisterUser {
     }
 
     @Test(priority = 1)
-    public void validateHomePageUrl() throws IOException {
+    public void registerNewUser() throws IOException {
 
         soft.assertTrue(Utility.verifyUrl(getDriver(), getPropertyData("Environment","homeUrl")));
-        soft.assertAll();
-    }
-
-    @Test(priority = 2)
-    public void verifyVisibilityOfNewUserSignup(){
         new P01_RegisterUser(getDriver())
                 .clickOnSignupLogin();
 
         soft.assertTrue(new P01_RegisterUser(getDriver()).verifyNewUserSignupText());
-        soft.assertAll();
-    }
 
-    @Test(priority = 3)
-    public void newUserSignup(){
         new P01_RegisterUser(getDriver())
-                .clickOnSignupLogin()
-                .enterName()
-                .enterEmail()
+                .clickOnSignupLogin().enterName().enterEmail()
                 .clickSignup();
 
-
         soft.assertTrue(new P01_RegisterUser(getDriver()).verifyEnterAccountInfoText());
-        soft.assertAll();
-    }
 
-    @Test(priority = 4)
-    public void fillSignUpDetails() throws IOException {
         new P01_RegisterUser(getDriver())
-                .clickOnSignupLogin()
-                .enterName()
-                .enterEmail()
-                .clickSignup()
-                .selectTitle()
-                .fillPassword()
-                .selectDay()
-                .selectMonth()
-                .selectYear()
-                .checkSignUpForOurNewsletter()
-                .checkReceiveSpecialOffers()
-                .fillFirstName()
-                .fillLastName()
-                .fillCompany()
-                .fillAddressOne()
-                .fillAddressTwo()
-                .selectCountry()
-                .fillState()
-                .fillCity()
-                .fillZipCode()
-                .fillMobileNumber()
-                .clickCreateAccount();
+                .selectTitle().fillPassword()
+                .selectDay().selectMonth()
+                .selectYear().checkSignUpForOurNewsletter()
+                .checkReceiveSpecialOffers().fillFirstName()
+                .fillLastName().fillCompany().fillAddressOne()
+                .fillAddressTwo().selectCountry().fillState()
+                .fillCity().fillZipCode().fillMobileNumber()
+                .clickCreateAccount()
+                .clickContinueBtn();
         soft.assertTrue(new P02_AccountCreated(getDriver()).verifyAccountCreatedText());
+
+        getDriver().navigate().refresh();
+
+        new P02_AccountCreated(getDriver())
+                .clickContinueBtn();
+
+        soft.assertTrue(new P02_AccountCreated(getDriver()).verifyUserLoggedIn());
+
+        new P02_AccountCreated(getDriver())
+                .clickDeleteAccountBtn();
+        soft.assertTrue(new P02_AccountCreated(getDriver()).verifyAccountDeletedText());
+
+        new P02_AccountCreated(getDriver())
+                .clickContinueAfterDeleteBtn();
+
         soft.assertAll();
     }
-
 
 
     @AfterMethod
     public void tearDown(){
-//        closeDriver();
+        closeDriver();
     }
 }
