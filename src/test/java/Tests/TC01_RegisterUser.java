@@ -31,10 +31,11 @@ public class TC01_RegisterUser {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
-    @Test(priority = 1)
+    @Test
     public void registerNewUser() throws IOException {
 
         soft.assertTrue(Utility.verifyUrl(getDriver(), getPropertyData("Environment","homeUrl")));
+
         new P01_RegisterUser(getDriver())
                 .clickOnSignupLogin();
 
