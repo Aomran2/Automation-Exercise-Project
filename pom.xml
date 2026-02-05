@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <seleniumVersion>4.40.0</seleniumVersion>
         <testNGVersion>7.11.0</testNGVersion>
@@ -37,6 +37,14 @@
                         <argLine>
                             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                         </argLine>
+
+<!--                Specify the TestNG suite XML file to run with Maven Surefire Plugin-->
+                        <suiteXmlFiles>
+                            <suiteXmlFile>
+                                test-runner/RegressionSuite.xml
+                            </suiteXmlFile>
+                        </suiteXmlFiles>
+
                     </configuration>
 
                 <dependencies>
