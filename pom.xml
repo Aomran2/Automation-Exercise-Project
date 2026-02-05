@@ -26,6 +26,7 @@
     </properties>
 
     <build>
+        <directory>test-outputs/target</directory>
         <plugins>
             <plugin>
                 <!-- Add the following options to your maven-surefire-plugin -->
