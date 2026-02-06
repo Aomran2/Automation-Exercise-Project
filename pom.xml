@@ -25,7 +25,9 @@
         <aspectj.version>1.9.25.1</aspectj.version>
     </properties>
 
-    <profiles>
+
+    <!--Define Maven profiles for different test suites-->
+<!--    <profiles>
         <profile>
             <id>regressionProfile</id>
 
@@ -33,7 +35,7 @@
                 <directory>test-outputs/target</directory>
                 <plugins>
                     <plugin>
-                        <!-- Add the following options to your maven-surefire-plugin -->
+                        &lt;!&ndash; Add the following options to your maven-surefire-plugin &ndash;&gt;
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>3.1.2</version>
@@ -42,7 +44,7 @@
                                 -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                             </argLine>
 
-                            <!-- Specify the TestNG suite XML file to run with Maven Surefire Plugin-->
+                            &lt;!&ndash; Specify the TestNG suite XML file to run with Maven Surefire Plugin&ndash;&gt;
                             <suiteXmlFiles>
                                 <suiteXmlFile>
                                     test-runner/RegressionSuite.xml
@@ -63,11 +65,43 @@
                 </plugins>
             </build>
 
+
         </profile>
-    </profiles>
+    </profiles>-->
 
+    <build>
+        <directory>test-outputs/target</directory>
+        <plugins>
+            <plugin>
+                <!-- Add the following options to your maven-surefire-plugin -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
 
+                    <!-- Specify the TestNG suite XML file to run with Maven Surefire Plugin-->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>
+                            test-runner/RegressionSuite.xml
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
 
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->

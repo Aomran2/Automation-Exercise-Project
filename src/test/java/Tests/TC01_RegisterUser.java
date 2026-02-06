@@ -4,7 +4,6 @@ import Pages.P01_RegisterUser;
 import Pages.P02_AccountCreated;
 import Utilities.Utility;
 import Listeners.ITestListenerClass;
-import com.github.javafaker.Faker;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -16,7 +15,7 @@ import java.time.Duration;
 
 import static DriverFactory.DriverFactory.*;
 import static Utilities.DataUtils.getPropertyData;
-import static Utilities.Utility.takeScreenshot;
+
 
 @Listeners(ITestListenerClass.class)
 public class TC01_RegisterUser {
@@ -25,7 +24,12 @@ public class TC01_RegisterUser {
 
     @BeforeMethod
     public void openBrowser() throws IOException {
-        setupDriver(getPropertyData("Environment","browser"));
+        //below code is to get the browser name from system property if it is set, otherwise it will get it from the properties file
+        // this allows us to run the test with different browsers without changing the code, we can set the browser name in the command line when running the test with maven, for example: mvn test -Dbrowser=chrome
+        //condition ? true : false
+        String browser = System.getProperty("browser") != null? System.getProperty("browser") : getPropertyData("Environment","browser");
+        setupDriver(browser);
+//        setupDriver(getPropertyData("Environment","browser"));
         getDriver().manage().window().maximize();
         getDriver().get(getPropertyData("Environment","homeUrl"));
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
