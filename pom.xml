@@ -28,48 +28,41 @@
     </properties>
 
 
-    <!--Define Maven profiles for different test suites-->
-<!--    <profiles>
+    <!--Define Maven profiles for different test suites, profile configuration only need plugins (groupId&artifactId)
+    and their configuration, dependencies are defined in the main dependencies section-->
+    <profiles>
         <profile>
             <id>regressionProfile</id>
 
-            <build>
-                <directory>test-outputs/target</directory>
-                <plugins>
-                    <plugin>
-                        &lt;!&ndash; Add the following options to your maven-surefire-plugin &ndash;&gt;
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.1.2</version>
-                        <configuration>
-                            <argLine>
-                                -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                            </argLine>
+         <build>
+             <plugins>
 
-                            &lt;!&ndash; Specify the TestNG suite XML file to run with Maven Surefire Plugin&ndash;&gt;
-                            <suiteXmlFiles>
-                                <suiteXmlFile>
-                                    test-runner/RegressionSuite.xml
-                                </suiteXmlFile>
-                            </suiteXmlFiles>
+                 <plugin>
+                     <groupId>io.qameta.allure</groupId>
+                     <artifactId>allure-maven</artifactId>
+                     <configuration>
+                         <reportVersion>${AllureVersion}</reportVersion>
+                     </configuration>
+                 </plugin>
 
-                        </configuration>
+                 <plugin>
+                         <!-- Add the following options to your maven-surefire-plugin -->
+                         <groupId>org.apache.maven.plugins</groupId>
+                         <artifactId>maven-surefire-plugin</artifactId>
 
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.aspectj</groupId>
-                                <artifactId>aspectjweaver</artifactId>
-                                <version>${aspectj.version}</version>
-                                <scope>runtime</scope>
-                            </dependency>
-                        </dependencies>
-                    </plugin>
-                </plugins>
-            </build>
-
-
+                         <configuration>
+                             <!-- Specify the TestNG suite XML file to run with Maven Surefire Plugin-->
+                             <suiteXmlFiles>
+                                 <suiteXmlFile>
+                                     test-runner/RegressionSuite.xml
+                                 </suiteXmlFile>
+                             </suiteXmlFiles>
+                         </configuration>
+                 </plugin>
+             </plugins>
+         </build>
         </profile>
-    </profiles>-->
+    </profiles>
 
     <build>
         <directory>test-outputs/target</directory>
@@ -119,6 +112,7 @@
     <dependencies>
 
         <!-- Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-plugin-api -->
+        <!--this dependency is used to create custom allure plugins-->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-plugin-api</artifactId>
