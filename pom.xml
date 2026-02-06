@@ -24,6 +24,7 @@
         <AllureVersion>2.32.0</AllureVersion>
         <aspectj.version>1.9.25.1</aspectj.version>
         <allureMavenVersion>2.12.0</allureMavenVersion>
+        <allurePluginAPIversion>2.36.0</allurePluginAPIversion>
     </properties>
 
 
@@ -80,7 +81,7 @@
                 <artifactId>allure-maven</artifactId>
                 <version>${allureMavenVersion}</version>
                 <configuration>
-                    <reportVersion>2.30.0</reportVersion>
+                    <reportVersion>${AllureVersion}</reportVersion>
                 </configuration>
             </plugin>
 
@@ -116,6 +117,15 @@
     </build>
 
     <dependencies>
+
+        <!-- Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-plugin-api -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-plugin-api</artifactId>
+            <version>${allurePluginAPIversion}</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
