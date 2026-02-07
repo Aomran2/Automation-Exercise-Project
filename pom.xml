@@ -75,7 +75,7 @@
                 <version>${allureMavenVersion}</version>
 
             <!--this execution will automatically generate the allure report after the test execution with mvn-->
-                <executions>
+                <!--<executions>
                 <execution>
                     <phase>test</phase>
                     <goals>
@@ -84,7 +84,7 @@
                         </goal>
                     </goals>
                 </execution>
-                </executions>
+                </executions>-->
                 <!---->
                 <configuration>
                     <reportVersion>${AllureVersion}</reportVersion>
