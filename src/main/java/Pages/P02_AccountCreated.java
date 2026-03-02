@@ -2,16 +2,21 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
+import static Utilities.LogUtils.info;
 import static Utilities.Utility.*;
 
 public class P02_AccountCreated {
 
     WebDriver driver;
 
-    private final By accountCreatedTextLocator = By.xpath("//b[contains(text(),'Account Created!')]");
+    private final By accountCreatedTextLocator = By.xpath("//b[contains(text(), 'Account Created!')]");
     private final By continueBtnLocator = By.xpath("//a[@data-qa=\"continue-button\"]");
     private final By loggedInAsLocator = By.xpath("//a[contains(text(), 'Logged in as')]");
     private final By deleteAccountBtnLocator = By.xpath("//a[contains(text(), 'Delete Account')]");
@@ -26,13 +31,34 @@ public class P02_AccountCreated {
         return verifyVisibilityOfText(driver, accountCreatedTextLocator);
     }
 
+    public String printAccountCreatedText(){
+        return getText(driver, accountCreatedTextLocator);
+    }
+
+
     public P02_AccountCreated clickContinueBtn(){
-        clickOnElement(driver, continueBtnLocator);
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(30))
+                    .until(ExpectedConditions.elementToBeClickable(continueBtnLocator));
+            clickOnElement(driver, continueBtnLocator);
+        } catch (TimeoutException e) {
+            info("Continue button not found, taking screenshot for debugging");
+            takeScreenshot(driver, "ContinueBtnNotFound");
+            throw e;
+        }
         return this;
     }
 
     public boolean verifyUserLoggedIn() {
-        return verifyVisibilityOfText(driver, loggedInAsLocator);
+        try {
+            return new WebDriverWait(driver, Duration.ofSeconds(30))
+                    .until(ExpectedConditions.visibilityOfElementLocated(loggedInAsLocator))
+                    .isDisplayed();
+        } catch (TimeoutException e) {
+            info("User logged in element not found");
+            takeScreenshot(driver, "UserLoggedInNotFound");
+            return false;
+        }
     }
 
     public P02_AccountCreated clickDeleteAccountBtn(){
@@ -41,7 +67,15 @@ public class P02_AccountCreated {
     }
 
     public boolean verifyAccountDeletedText(){
-        return verifyVisibilityOfText(driver, accountDeletedTextLocator);
+        try {
+            return new WebDriverWait(driver, Duration.ofSeconds(30))
+                    .until(ExpectedConditions.visibilityOfElementLocated(accountDeletedTextLocator))
+                    .isDisplayed();
+        } catch (TimeoutException e) {
+            info("Account deleted element not found");
+            takeScreenshot(driver, "AccountDeletedNotFound");
+            return false;
+        }
     }
 
     public P02_AccountCreated clickContinueAfterDeleteBtn(){

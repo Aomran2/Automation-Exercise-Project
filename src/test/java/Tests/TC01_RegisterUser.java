@@ -61,12 +61,15 @@ public class TC01_RegisterUser {
                 .fillCity().fillZipCode().fillMobileNumber()
                 .clickCreateAccount()
                 .clickContinueBtn();
+
         soft.assertTrue(new P02_AccountCreated(getDriver()).verifyAccountCreatedText());
 
-        getDriver().navigate().refresh();
+        System.out.println( new P02_AccountCreated(getDriver()).printAccountCreatedText() );
+
+/*        getDriver().navigate().refresh();
 
         new P02_AccountCreated(getDriver())
-                .clickContinueBtn();
+                .clickContinueBtn();*/
 
         soft.assertTrue(new P02_AccountCreated(getDriver()).verifyUserLoggedIn());
 
