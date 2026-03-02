@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 
 public class LogUtils {
 
-    private static final String logs_path = "test-outputs/logs";
+    private static final String logs_path = "test-outputs/target/logs";
 
     /*
     Why getStackTrace()[2] is used:
