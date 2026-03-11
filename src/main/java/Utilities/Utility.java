@@ -79,7 +79,7 @@ public class Utility {
     //this function wait for 5 seconds and get text of the desired element
     public static String getText(WebDriver driver, By locator) {
 
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
         return driver.findElement(locator).getText();
     }

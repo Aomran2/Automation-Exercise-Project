@@ -31,7 +31,7 @@ public class P02_AccountCreated {
         return verifyVisibilityOfText(driver, accountCreatedTextLocator);
     }
 
-    public String printAccountCreatedText(){
+    public String accountCreatedText(){
         return getText(driver, accountCreatedTextLocator);
     }
 

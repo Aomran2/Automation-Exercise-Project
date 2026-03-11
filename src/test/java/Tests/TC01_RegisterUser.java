@@ -59,12 +59,15 @@ public class TC01_RegisterUser {
                 .fillLastName().fillCompany().fillAddressOne()
                 .fillAddressTwo().selectCountry().fillState()
                 .fillCity().fillZipCode().fillMobileNumber()
-                .clickCreateAccount()
-                .clickContinueBtn();
+                .clickCreateAccount();
+
+        soft.assertEquals(new P02_AccountCreated(getDriver()).accountCreatedText(),
+                getPropertyData("Environment","accountCreatedText"));
 
         soft.assertTrue(new P02_AccountCreated(getDriver()).verifyAccountCreatedText());
 
-        System.out.println( new P02_AccountCreated(getDriver()).printAccountCreatedText() );
+        new P02_AccountCreated(getDriver())
+                .clickContinueBtn();
 
 /*        getDriver().navigate().refresh();
 
