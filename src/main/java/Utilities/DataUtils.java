@@ -22,11 +22,28 @@ public class DataUtils {
     }
 
     //this method Reads a .properties file and returns the value associated with the specified key.
-    public static String getPropertyData(String fileName, String key) throws IOException {
+/*    public static String getPropertyData(String fileName, String key) throws IOException {
 
         Properties properties = new Properties();
         properties.load(new FileInputStream(filePath + fileName + ".properties"));
         return properties.getProperty(key);
+    }*/
+
+
+    public static String getPropertyData(String fileName, String key) throws IOException {
+        String fullPath = filePath + fileName + ".properties";
+
+        try (FileInputStream fileInput = new FileInputStream(fullPath)) {
+            Properties properties = new Properties();
+            properties.load(fileInput);
+
+            String value = properties.getProperty(key);
+
+            if (value == null) {
+                throw new IllegalArgumentException("Key '" + key + "' not found in " + fileName);
+            }
+            return value;
+        }
     }
 }
 
